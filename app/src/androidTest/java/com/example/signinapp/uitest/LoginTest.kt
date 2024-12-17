@@ -12,4 +12,12 @@ class LoginTest : BaseTestFromLoginPage() {
             verifyLoginPageElements()
         }
     }
+
+    @Test
+    fun verifyEmptySignInError() {
+        onLoginPage(testRule) {
+            loginWith()
+            tapSignInButton()
+        }
+    }
 }
