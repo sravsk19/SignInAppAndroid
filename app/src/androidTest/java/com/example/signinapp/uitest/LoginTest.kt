@@ -16,8 +16,16 @@ class LoginTest : BaseTestFromLoginPage() {
     @Test
     fun verifyEmptySignInError() {
         onLoginPage(testRule) {
-            loginWith()
-            tapSignInButton()
+            loginWith(tflId = "", password = "")
+            verifyLoginErrorDialog()
+        }
+    }
+
+    @Test
+    fun verifyIncorrectSignIn() {
+        onLoginPage(testRule) {
+            loginWith(tflId = "abc@test.com", password = "test1234")
+            verifyLoginErrorDialog()
         }
     }
 }
