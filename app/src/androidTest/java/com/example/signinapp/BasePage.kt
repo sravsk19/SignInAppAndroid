@@ -20,7 +20,7 @@ open class BasePage(private val testRule: ComposeTestRule) {
 
     /**************************
     Base Assertions on pageObjects
-    ****************************/
+     ****************************/
     fun assertTextInputIsDisplayed(textInput: String) {
         textInput(textInput).assertIsDisplayed()
     }
@@ -37,6 +37,14 @@ open class BasePage(private val testRule: ComposeTestRule) {
 
     fun assertTextWithContentDescription(text: String) =
         testRule.onNodeWithContentDescription(text).isDisplayed()
+
+    fun assertTextIsDisplayed(info: List<String>) =
+        info.forEach { infoText ->
+            testRule.onNodeWithContentDescription(infoText).isDisplayed()
+        }
+
+    fun assertTextIsDisplayed(text: String) =
+        testRule.onNode(hasText(text)).assertIsDisplayed()
 
     fun verifyAlertDialog(
         titleText: String,

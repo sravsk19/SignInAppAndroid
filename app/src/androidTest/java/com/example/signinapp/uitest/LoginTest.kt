@@ -2,6 +2,7 @@ package com.example.signinapp.uitest
 
 import com.example.signinapp.BaseTestFromLoginPage
 import com.example.signinapp.page.onLoginPage
+import com.example.signinapp.page.onMyTfLPage
 import org.junit.Test
 
 class LoginTest : BaseTestFromLoginPage() {
@@ -26,6 +27,16 @@ class LoginTest : BaseTestFromLoginPage() {
         onLoginPage(testRule) {
             loginWith(tflId = "abc@test.com", password = "test1234")
             verifyLoginErrorDialog()
+        }
+    }
+
+    @Test
+    fun verifySuccessfulLogin() {
+        onLoginPage(testRule) {
+            loginWith(tflId = "emma@tfl.gov.uk", password = "password123")
+        }
+        onMyTfLPage(testRule) {
+            verifyMyTfLPageDisplayed()
         }
     }
 }
