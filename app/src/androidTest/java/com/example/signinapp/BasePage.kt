@@ -74,6 +74,11 @@ open class BasePage(private val testRule: ComposeTestRule) {
     fun enterText(text: String, textToEnter: String) =
         textInput(text).performTextInput(textToEnter)
 
+    fun tapAlertDialogButton(text: String) = testRule.onNode(
+        hasText(text)
+                and hasAnyAncestor(isDialog())
+    ).performClick()
+
     /**************************
     Base private functions
      ***************************/

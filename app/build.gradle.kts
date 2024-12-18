@@ -20,6 +20,10 @@ android {
         }
     }
 
+    testOptions {
+        animationsDisabled = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
