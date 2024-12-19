@@ -12,6 +12,9 @@ class MyTfLPage(
     testRule: ComposeTestRule
 ) : BasePage(testRule) {
 
+    /**
+     * MyTfL page elements used in the App 
+     */
     object MyTfLPageElements {
         const val SIGN_OUT = "Sign Out"
         const val MY_TFL_TITLE = "My TfL"
@@ -21,7 +24,10 @@ class MyTfLPage(
         const val CANCEL = "Cancel"
     }
 
-    fun verifyMyTfLPage() {
+    /**
+     * Asserts MyTfL Page default elements are displayed
+     */
+    fun assertMyTfLPageIsDisplayed() {
         assertTextOnButton(SIGN_OUT)
         assertTextIsDisplayed(
             listOf(
@@ -32,6 +38,9 @@ class MyTfLPage(
         )
     }
 
+    /**
+     * Verifies Confirm SignOut button dialog elements and values
+     */
     fun verifyConfirmSignOutDialog() {
         verifyAlertDialog(SIGN_OUT_ALERT_TITLE, SIGN_OUT_ALERT_MESSAGE, CANCEL, SIGN_OUT)
     }
@@ -43,6 +52,5 @@ class MyTfLPage(
 }
 
 internal fun onMyTfLPage(
-    testRule: ComposeTestRule,
-    func: MyTfLPage.() -> Unit
+    testRule: ComposeTestRule, func: MyTfLPage.() -> Unit
 ) = MyTfLPage(testRule).apply { func() }

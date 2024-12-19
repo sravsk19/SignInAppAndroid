@@ -14,6 +14,9 @@ import com.example.signinapp.page.LoginPage.LoginPageElements.TFL_LOGO
 
 class LoginPage(testRule: ComposeTestRule) : BasePage(testRule) {
 
+    /**
+     * Login page elements used in the App
+     */
     object LoginPageElements {
         const val TFL_LOGO = "Transport For London Logo"
         const val TFL_ID = "TFL ID"
@@ -29,7 +32,7 @@ class LoginPage(testRule: ComposeTestRule) : BasePage(testRule) {
 
     }
 
-    fun verifyLoginPageElements() {
+    fun assertLoginPageElements() {
         assertImageWithContentDescription(TFL_LOGO)
         assertTextWithContentDescription(TFL_ID)
         assertTextWithContentDescription(PASSWORD)
@@ -43,13 +46,18 @@ class LoginPage(testRule: ComposeTestRule) : BasePage(testRule) {
         tapTextButton(DONE)
     }
 
+    /**
+     * Login with valid/invalid/empty values
+     * @param tflId text (email address format)
+     * @param password password text
+     */
     fun loginWith(tflId: String, password: String) {
         enterText(TFL_ID_PLACEHOLDER, tflId)
         enterText(PASSWORD_PLACEHOLDER, password)
         tapSignInButton()
     }
 
-    fun tapSignInButton() = tapTextButton(SIGN_IN)
+    private fun tapSignInButton() = tapTextButton(SIGN_IN)
 }
 
 internal fun onLoginPage(

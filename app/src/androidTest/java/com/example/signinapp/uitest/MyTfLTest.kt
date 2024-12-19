@@ -8,6 +8,9 @@ import org.junit.Test
 
 class MyTfLTest : BaseTestFromLoginPage() {
 
+    /**
+     * Setup function to navigate to MyTfL Page, this function will Login using valid credentials from Login Page
+     */
     @Before
     override fun setUp() {
         super.setUp()
@@ -16,23 +19,32 @@ class MyTfLTest : BaseTestFromLoginPage() {
         }
     }
 
+    /**
+     * Verifies MyTfL Page initial state
+     */
     @Test
     fun validateMyTfLPage() {
         onMyTfLPage(testRule) {
-            verifyMyTfLPage()
+            assertMyTfLPageIsDisplayed()
         }
     }
 
+    /**
+     * Verifies app doesn't navigates to Other screens after Cancelling confirm SignOut AlertDialog
+     */
     @Test
     fun verifyCancelSignOut() {
         onMyTfLPage(testRule) {
             tapSignOutButton()
             verifyConfirmSignOutDialog()
             cancelSignOut()
-            verifyMyTfLPage()
+            assertMyTfLPageIsDisplayed()
         }
     }
 
+    /**
+     * Verifies navigating back to Login page after successful SignOut
+     */
     @Test
     fun verifySignOutSuccess() {
         onMyTfLPage(testRule) {
@@ -41,7 +53,7 @@ class MyTfLTest : BaseTestFromLoginPage() {
             confirmSignOut()
         }
         onLoginPage(testRule) {
-            verifyLoginPageElements()
+            assertLoginPageElements()
         }
     }
 

@@ -7,13 +7,20 @@ import org.junit.Test
 
 class LoginTest : BaseTestFromLoginPage() {
 
+    /**
+     * Validates the Login Page elements are displayed
+     */
     @Test
     fun validateSignInPage() {
         onLoginPage(testRule) {
-            verifyLoginPageElements()
+            assertLoginPageElements()
         }
     }
 
+    /**
+     * Verifies error dialog with title and dismiss button is displayed
+     * for submitting empty Login form
+     */
     @Test
     fun verifyEmptySignInError() {
         onLoginPage(testRule) {
@@ -22,6 +29,10 @@ class LoginTest : BaseTestFromLoginPage() {
         }
     }
 
+    /**
+     * Verifies error dialog with title and dismiss button is displayed
+     * for submitting incorrect Login form
+     */
     @Test
     fun verifyIncorrectSignIn() {
         onLoginPage(testRule) {
@@ -30,6 +41,9 @@ class LoginTest : BaseTestFromLoginPage() {
         }
     }
 
+    /**
+     * Verifies navigation to MyTfL page after successful Login
+     */
     @Test
     fun verifySuccessfulLogin() {
         onLoginPage(testRule) {
