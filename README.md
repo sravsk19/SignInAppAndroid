@@ -11,6 +11,7 @@ The application contains two screens, Login and MyTfL. Both screens have static 
 ### Test Setup overview:
 
 The set up follows **PageObject pattern** and **ComposeTest** to ensure the scalability of the tests when new features are added and to facilitate maintainable test suites.
+
 ![Untitled Diagram drawio (2)](https://github.com/user-attachments/assets/9b6011a0-a2bb-4a8e-a8b2-d1d9273dabb4)
 
  - **BaseTest**  -  BaseTestFromLoginPage launches the MainActivity of the application with default state, i.e, Logged out state. BaseTest uses ActivityScenario from Android Test framework to launch Activity. 
