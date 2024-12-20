@@ -19,9 +19,7 @@ The set up follows **PageObject pattern** and **ComposeTest** to ensure the scal
  - **PageObject (Page files)** - The page classes are implementations on Compose node elements relevant to Target Application, where the class have functions that uses BasePage actions and assertions in performing instrumentation tasks. Each PageObject implementation are independent and is in context of the screen as classified in the application. These PageObject implementations can be used across multiple UI tests. A package level function (e.g, onSomePage()) is also added for simplicity by removing the need of declaring and creating an object in UI test files. This package level function is also helps in binding ComposeTestRule from BaseTest with PageObject implementation to keep a single instance of testRule instrument the application.
  - **UITests** - The tests are derived from BaseTest to launch MainActivity via the setUp function with default state. The tests are exercised using the package level functions from PageObject classes in performing multiple actions and assertions. The package level functions from PageObject classes allows tests to assert and action on expected screens.
 
-### Misc
-------
-#### Test execution
+### Test execution
 Tests can be executed using Android Studio from the AndroidTest package from source or from command line using `./gradlew connectedAndroidTest`
-#### Activity Animations
+### Activity Animations
 To reduce test execution time `animationsDisabled = true` is being added in `build.gradle.kts` test options.
